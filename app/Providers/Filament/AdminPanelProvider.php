@@ -25,11 +25,13 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->id('admin')
-            ->path('admin')
-            ->login()
+            ->spa()
+            ->collapsibleNavigationGroups()
+            ->sidebarCollapsibleOnDesktop()->sidebarWidth('15rem')
+            ->id('admin')->path('admin')->brandName('PROJECT MANAGEMENT')
+            ->login()->profile()->registration()->font('Poppins')->favicon('https://laravel.com/img/favicon/apple-touch-icon.png')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Emerald,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
