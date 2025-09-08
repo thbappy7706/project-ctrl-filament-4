@@ -30,7 +30,7 @@ class AdminPanelProvider extends PanelProvider
             ->collapsibleNavigationGroups()
             ->sidebarCollapsibleOnDesktop()->sidebarWidth('15rem')
             ->id('admin')->path('admin')->brandName('PROJECT MANAGEMENT')
-            ->login()->profile()->registration()->font('Poppins')->favicon('https://laravel.com/img/favicon/apple-touch-icon.png')
+            ->login()->profile()->registration()->font('Saira')->favicon('https://laravel.com/img/favicon/apple-touch-icon.png')
             ->colors([
                 'primary' => Color::Emerald,
             ])
