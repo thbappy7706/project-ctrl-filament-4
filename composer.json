@@ -10,6 +10,7 @@
         "filament/filament": "^4.0",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
+        "miguilim/filament-auto-panel": "^3.3",
         "resma/filament-awin-theme": "^1.0",
         "spatie/laravel-permission": "^6.21"
     },

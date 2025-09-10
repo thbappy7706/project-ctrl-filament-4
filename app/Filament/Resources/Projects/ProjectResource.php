@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProjectResource extends Resource
 {
@@ -23,6 +24,7 @@ class ProjectResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'Project';
+    protected static string|null|\UnitEnum $navigationGroup = 'Project Management';
 
     public static function form(Schema $schema): Schema
     {
@@ -36,13 +38,15 @@ class ProjectResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return ProjectsTable::configure($table);
+        return ProjectsTable::configure($table)
+            ->deferFilters(false)
+            ->modifyQueryUsing(fn (Builder $query) => $query->with(['client','category','creator','updater']));
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+
         ];
     }
 

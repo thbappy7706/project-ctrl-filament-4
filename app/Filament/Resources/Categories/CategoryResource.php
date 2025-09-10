@@ -23,6 +23,7 @@ class CategoryResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'Category';
+    protected static string|null|\UnitEnum $navigationGroup = 'Configuration';
 
     public static function form(Schema $schema): Schema
     {
@@ -36,7 +37,7 @@ class CategoryResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return CategoriesTable::configure($table);
+        return CategoriesTable::configure($table)->deferFilters(false);
     }
 
     public static function getRelations(): array

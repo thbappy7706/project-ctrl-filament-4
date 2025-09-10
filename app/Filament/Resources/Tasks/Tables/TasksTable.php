@@ -32,12 +32,9 @@ class TasksTable
                     ->searchable(),
                 TextColumn::make('project.name')
                     ->searchable(),
-                TextColumn::make('created_by')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('updated_by')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('project.client.name')
+                    ->label('Client')
+                    ->searchable(),
                 TextColumn::make('category.name')
                     ->searchable(),
                 TextColumn::make('created_at')

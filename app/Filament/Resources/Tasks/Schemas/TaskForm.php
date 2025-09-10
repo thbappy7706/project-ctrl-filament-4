@@ -39,12 +39,6 @@ class TaskForm
                 Select::make('project_id')
                     ->relationship('project', 'name')
                     ->required(),
-                TextInput::make('created_by')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('updated_by')
-                    ->required()
-                    ->numeric(),
                 Select::make('category_id')
                     ->relationship('category', 'name')
                     ->required(),

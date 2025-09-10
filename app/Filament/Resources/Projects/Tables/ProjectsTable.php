@@ -27,12 +27,12 @@ class ProjectsTable
                 ImageColumn::make('image_path'),
                 TextColumn::make('status')
                     ->badge(),
-                TextColumn::make('created_by')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('updated_by')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('creator.name')
+                    ->label('Created by')
+                    ->searchable(),
+                TextColumn::make('updater.name')
+                    ->label('Updated by')
+                    ->searchable(),
                 TextColumn::make('client.name')
                     ->searchable(),
                 TextColumn::make('category.name')

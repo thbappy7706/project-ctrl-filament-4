@@ -33,12 +33,6 @@ class ProjectForm
         ])
                     ->default('pending')
                     ->required(),
-                TextInput::make('created_by')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('updated_by')
-                    ->required()
-                    ->numeric(),
                 Select::make('client_id')
                     ->relationship('client', 'name')
                     ->required(),

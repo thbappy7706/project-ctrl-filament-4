@@ -27,12 +27,6 @@ class ClientForm
                     ->options(['active' => 'Active', 'in_active' => 'In active'])
                     ->default('active')
                     ->required(),
-                TextInput::make('created_by')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('updated_by')
-                    ->required()
-                    ->numeric(),
             ]);
     }
 }

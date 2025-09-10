@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class TaskResource extends Resource
 {
@@ -23,6 +24,7 @@ class TaskResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'Task';
+    protected static string|null|\UnitEnum $navigationGroup = 'Project Management';
 
     public static function form(Schema $schema): Schema
     {
@@ -36,7 +38,9 @@ class TaskResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return TasksTable::configure($table);
+        return TasksTable::configure($table)
+            ->deferFilters(false)
+            ->modifyQueryUsing(fn (Builder $query) => $query->with(['assignedUser','project.client','category']));
     }
 
     public static function getRelations(): array

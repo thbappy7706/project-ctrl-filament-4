@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class ClientResource extends Resource
 {
@@ -23,6 +24,7 @@ class ClientResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'Client';
+    protected static string|null|\UnitEnum $navigationGroup = 'CRM';
 
     public static function form(Schema $schema): Schema
     {
@@ -36,13 +38,15 @@ class ClientResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return ClientsTable::configure($table);
+        return ClientsTable::configure($table)
+            ->deferFilters(false)
+            ->modifyQueryUsing(fn (Builder $query) => $query->with(['creator','updater']));
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+
         ];
     }
 
